@@ -1,11 +1,4 @@
 # facelock
-A python application to lock the screen when it does not see you anymore in front of the camera
-
-## install
-```
-pip install -r requirements.txt
-```
-=======
 ![Facelock logo](logo.png)
 
 A python 3 application that will lock the computer screen when you
