@@ -1,9 +1,7 @@
 import abc
 
 
-class VisualFeedback(object):
-  __metaclass__ = abc.ABCMeta
-  
+class VisualFeedback(object, metaclass=abc.ABCMeta):
   def __init__(self, value):
     self.value = value
 
@@ -23,3 +21,10 @@ class VisualFeedback(object):
   def idle(self):
     pass
 
+  @abc.abstractmethod
+  def critical(self):
+    pass
+
+  @abc.abstractmethod
+  def busy(self):
+    pass

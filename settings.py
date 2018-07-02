@@ -60,7 +60,7 @@ class Settings:
 
     def getSettingsDialogSize(self):
         size = self.config['facelock']['settingsDialogSize'].split("x")
-        return map(int,size)
+        return list(map(int,size))
 
     def setTimeout(self,timeout):
         self.config['facelock']['timeout']=str(timeout)     
@@ -70,7 +70,10 @@ class Settings:
 
     def setTrackingOnStart(self,isTrackingOnStart):
         self.config['facelock']['trackOnStart']=str(isTrackingOnStart)     
-        
+
+    def setLockOnUnknownFacesOnly(self,lockOnUnknowFacesOnly):
+        self.config['facelock']['lockOnUnknownFacesOnly']=str(lockOnUnknowFacesOnly)
+
     def setImagePath(self,imagePath):
         self.config['facelock']['imagePath']=imagePath     
 

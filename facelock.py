@@ -1,27 +1,30 @@
-#!/usr/local/bin/python2
+#!/usr/local/bin/python3
 import sys
-
-from settings import Settings
+import os
 
 from qtImports import *
 
+from settings import Settings
 from AboutDialog import AboutDialog
 from SettingsDialog import SettingsDialog
 from SystemTrayGUIBuilder import SystemTrayGUIBuilder
-from QtSystemTrayVisualFeedback import QtSystemTrayVisualFeedback
 from CameraProbe import CameraProbe
 from FaceRecognitionBuilder import FaceRecognitionBuilder
-
+from ConfigurationChecker import ConfigurationChecker
 from nohup import nohup
 
-
 def main():
+  os.chdir(os.path.dirname(sys.argv[0]))
+
   app = QApplication(sys.argv)
   QApplication.setQuitOnLastWindowClosed(False)
 
   settings=Settings('facelock')
+
   aboutDialog = AboutDialog()
   settingsDialog = SettingsDialog(settings)
+
+  ConfigurationChecker(settingsDialog).fixConfiguration()
 
   cameraProbe = CameraProbe()
 
@@ -40,8 +43,7 @@ def main():
     build()
   
   trayIconGUI.show()
-  #sys.exit(app.exec_())
   app.exec_()
-              
+
 if __name__ == '__main__':
     nohup(main)
